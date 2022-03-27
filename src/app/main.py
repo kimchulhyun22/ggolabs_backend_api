@@ -1,7 +1,6 @@
-import uvicorn
 from fastapi import FastAPI
 
-from app.util.kakao_map_api import search_keyword_within_radius
+from app.util.kakao_map_api import KakaoMapAPI
 
 app = FastAPI()
 
@@ -16,5 +15,6 @@ async def root():
 @app.post('/api/v1/test/search/keyword')
 async def search_keyword(keyword: str, page_num: int,
                          latitude: float, longitude: float, radius: int):
-    return await search_keyword_within_radius(keyword=keyword, page_num=page_num, latitude=latitude,
-                                              longitude=longitude, radius=radius)
+    kakao_map = KakaoMapAPI(latitude, longitude)
+
+    return await kakao_map.search_keyword_within_radius(keyword=keyword, page_num=page_num, radius=radius)
