@@ -13,7 +13,7 @@ class TestCategory(unittest.TestCase):
 
     def test_category(self):
         # 카테고리 데이터 생성
-        category = Category("restaurant", "17849")
+        category = Category("restaurant")
 
         self.session.add(category)
         self.session.commit()
@@ -24,7 +24,6 @@ class TestCategory(unittest.TestCase):
         self.session.close()
 
         self.assertEqual(category.name, "restaurant")
-        self.assertEqual(category.code, "17849")
 
     def tearDown(self) -> None:
         drop_db()
