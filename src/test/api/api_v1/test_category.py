@@ -10,7 +10,7 @@ class TestCategory(unittest.TestCase):
         self.test_client = TestClient(app)
 
     def test_category_list(self):
-        response = self.test_client.get(f"{settings.API_V1_PREFIX}/category")
+        response = self.test_client.get(f"{settings.API_V1_PREFIX}/categories")
         response_json = response.json()
 
         self.assertEqual(response.status_code, 200)
