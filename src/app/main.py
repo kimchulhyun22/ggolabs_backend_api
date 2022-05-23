@@ -21,5 +21,5 @@ async def search_keyword(keyword: str, page_num: int,
 
     return await kakao_map.search_keyword_within_radius(keyword=keyword, page_num=page_num, radius=radius)
 
-가
+
 app.include_router(api_router, prefix=settings.API_V1_PREFIX)
