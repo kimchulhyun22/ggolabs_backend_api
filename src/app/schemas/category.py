@@ -6,5 +6,5 @@ from pydantic import BaseModel
 class CategoryResponse(BaseModel):
     id: int
     name: str
-    click_count: int
+    view_count: int
     image: Optional[str] = ""

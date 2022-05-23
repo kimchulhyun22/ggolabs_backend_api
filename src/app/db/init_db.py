@@ -46,7 +46,7 @@ def init_category():
         session.add(Category(
             name=data["name"],
             code=data["code"],
-            click_count=data["click_count"],
+            view_count=data["view_count"],
             image=data["image"]
         ))
 

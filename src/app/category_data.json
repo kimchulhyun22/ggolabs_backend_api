@@ -4,49 +4,49 @@
             "name": "노래방",
             "image": "",
             "code": "",
-            "click_count": 0
+            "view_count": 0
         },
         {
             "name": "PC방",
             "image": "",
             "code": "",
-            "click_count": 0
+            "view_count": 0
         },
         {
             "name": "스크린 골프",
             "image": "",
             "code": "",
-            "click_count": 0
+            "view_count": 0
         },
         {
             "name": "당구장",
             "image": "",
             "code": "",
-            "click_count": 0
+            "view_count": 0
         },
         {
             "name": "음식점",
             "image": "",
             "code": "FD6",
-            "click_count": 0
+            "view_count": 0
         },
         {
             "name": "카페",
             "image": "",
             "code": "CE7",
-            "click_count": 0
+            "view_count": 0
         },
         {
             "name": "주점",
             "image": "",
             "code": "",
-            "click_count": 0
+            "view_count": 0
         },
         {
             "name": "공연",
             "image": "",
             "code": "CT1",
-            "click_count": 0
+            "view_count": 0
         }
     ]
 }

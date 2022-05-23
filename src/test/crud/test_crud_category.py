@@ -13,14 +13,14 @@ class TestCRUDCategory(unittest.TestCase):
             "스크린 골프", "카페", "노래방", "펍"
         ]
 
-    def test_category_list_sorted_by_click_count(self):
+    def test_category_list_sorted_by_view_count(self):
         # 테스트케이스 인덱스에 따라 클릭 카운트 설정
         for idx, category_name in enumerate(self.test_category):
-            self.session.add(Category(category_name, click_count=idx))
+            self.session.add(Category(category_name, view_count=idx))
             self.session.commit()
         self.session.close()
 
-        category_list = get_category_list_sorted_by_click_count(self.session)
+        category_list = get_category_list_sorted_by_view_count(self.session)
         self.session.close()
 
         for i in range(len(category_list)):

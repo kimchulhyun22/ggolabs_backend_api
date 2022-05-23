@@ -24,12 +24,12 @@ class TestCategory(unittest.TestCase):
 
         self.assertEqual('id' in response_first, True)
         self.assertEqual('name' in response_first, True)
-        self.assertEqual('click_count' in response_first, True)
+        self.assertEqual('view_count' in response_first, True)
         self.assertEqual('image' in response_first, True)
 
         self.assertEqual('id' in response_second, True)
         self.assertEqual('name' in response_second, True)
-        self.assertEqual('click_count' in response_second, True)
+        self.assertEqual('view_count' in response_second, True)
         self.assertEqual('image' in response_second, True)
 
-        self.assertEqual(response_first['click_count'] >= response_second['click_count'], True)
+        self.assertEqual(response_first['view_count'] >= response_second['view_count'], True)
