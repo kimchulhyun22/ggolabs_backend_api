@@ -1,8 +1,11 @@
 from fastapi import FastAPI
 
+from app.db.init_db import init_db
 from app.util.kakao_map_api import KakaoMapAPI
 from app.api.api_v1.api import api_router
 from app.core.config import settings
+
+init_db()
 
 app = FastAPI()
 

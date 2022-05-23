@@ -3,7 +3,7 @@ import unittest
 from app.db.session import SessionLocal
 from app.models.category import Category
 
-from app.db.db_setup import create_db, drop_db
+from app.db.init_db import create_db, drop_db
 
 
 class TestCategory(unittest.TestCase):
