@@ -1,6 +1,7 @@
 from app.db.session import Base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, ForeignKey
 from geoalchemy2 import Geometry
+from app.models.category import Category
 
 
 class Store(Base):
@@ -11,6 +12,7 @@ class Store(Base):
     location = Column(Geometry(geometry_type='POINT', srid=4326), nullable=False)
     image = Column(String(200), nullable=True)
     view_count = Column(Integer, nullable=False, default=0)
+    category_id = Column(Integer, ForeignKey('category.id'))
 
     def __init__(self, name, location, image="", view_count=0):
         self.name = name
