@@ -1,4 +1,4 @@
-from typing import List, Any
+from typing import Any
 
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
@@ -14,6 +14,9 @@ router = APIRouter()
 def get_category_list(db: Session = Depends(get_db_session)) -> Any:
     category_list = get_category_list_sorted_by_view_count(db=db)
 
-    return [
-        category.__dict__ for category in category_list
-    ]
+    return CategoryResponse(
+        status_code=200,
+        data=[
+            category.__dict__ for category in category_list
+        ]
+    )
