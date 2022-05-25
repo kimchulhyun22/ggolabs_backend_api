@@ -1,4 +1,5 @@
 import json
+import os
 
 from .session import Base, engine
 
@@ -25,7 +26,9 @@ def init_db():
 def init_category():
     category_data = None
 
-    with open("app/category_data.json", "r") as file:
+    file_path = os.path.dirname(__file__)
+
+    with open(file_path + "/../category_data.json", "r") as file:
         category_data = json.load(file)
         category_data = category_data["category"]
 
