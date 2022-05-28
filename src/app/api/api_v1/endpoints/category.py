@@ -25,9 +25,10 @@ def get_category_list(db: Session = Depends(get_db_session)) -> Any:
 
 
 @router.get("/{category_id}/stores")
-def get_store_list(category_id: int, longitude: float, latitude: float,
+def get_store_list(category_id: int, long: float, lat: float, dist: int, page_num: int,
                    db: Session = Depends(get_db_session)) -> Any:
-    store_list = get_store_list_by_category_id(db=db, longitude=longitude, latitude=latitude, category_id=category_id)
+    store_list = get_store_list_by_category_id(db=db, long=long, lat=lat, dist=dist, page_num=page_num,
+                                               category_id=category_id)
 
     return StoreResponse(
         status_code=200,

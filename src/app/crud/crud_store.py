@@ -8,12 +8,15 @@ from app.schemas.store import StoreResponseDto
 from app.util.data_transform import transform_wkb_element_to_xy
 
 
-def get_store_list_by_category_id(db: Session, category_id: int,
-                                  longitude: float, latitude: float) -> List[StoreResponseDto]:
+def get_store_list_by_category_id(db: Session, category_id: int, long: float, lat: float,
+                                  dist: int, page_num: int) -> List[StoreResponseDto]:
     store_list = db.query(Store).filter(
-        func.ST_DistanceSphere(Store.location, 'POINT({} {})'.format(longitude, latitude)) < 3000)\
+        func.ST_DistanceSphere(Store.location, 'POINT({} {})'.format(long, lat)) < dist)\
         .filter_by(category_id=category_id).order_by(Store.view_count.desc()).limit(5)
 
+    store_count = store_list.count()
+
+    store_list = store_list[15 * page_num:15 * (page_num + 1)]
     store_response_dto_list = []
 
     for store in store_list:
@@ -22,8 +25,8 @@ def get_store_list_by_category_id(db: Session, category_id: int,
         store_response_dto_list.append(
             StoreResponseDto(id=store.id,
                              name=store.name,
-                             x=x,
-                             y=y,
+                             long=x,
+                             lat=y,
                              view_count=store.view_count,
                              image=store.image))
 

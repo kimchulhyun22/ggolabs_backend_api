@@ -8,8 +8,8 @@ from app.schemas.base import BaseHttpResponse
 class StoreResponseDto(BaseModel):
     id: int
     name: str
-    x: float
-    y: float
+    long: float
+    lat: float
     view_count: int
     image: str = ""
 
