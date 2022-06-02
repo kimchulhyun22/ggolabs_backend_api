@@ -13,3 +13,10 @@ def get_category_list_sorted_by_view_count(db: Session) -> List[CategoryResponse
                             name=category.name,
                             view_count=category.view_count,
                             image=category.image) for category in category_list]
+
+
+def increase_category_viewcount(db: Session, category_id: int, count: int):
+    category = db.query(Category).filter_by(id=category_id).one()
+    category.view_count += 1
+    db.commit()
+    db.close()
