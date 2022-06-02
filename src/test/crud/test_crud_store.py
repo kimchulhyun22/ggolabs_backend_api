@@ -1,6 +1,6 @@
 import unittest
 
-from app.crud.crud_store import get_store_list_by_category_id
+from app.crud.crud_store import store_list_by_category_id
 from app.db.init_db import create_db, drop_db, init_category
 from app.db.session import SessionLocal
 from app.crud.crud_category import *
@@ -31,7 +31,7 @@ class TestCRUDCategory(unittest.TestCase):
             self.session.commit()
         self.session.close()
 
-        store_list = get_store_list_by_category_id(self.session, 1)
+        store_list = store_list_by_category_id(self.session, 1,,
         self.session.close()
 
         for i in range(len(store_list)):

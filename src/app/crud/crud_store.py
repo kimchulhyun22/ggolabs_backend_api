@@ -12,12 +12,16 @@ from app.util.data_transform import transform_wkb_element_to_xy
 STORE_PAGEINATION = 15
 
 
-def get_store_list_by_category_id(db: Session, category_id: int, long: float, lat: float,
+def store_list_by_category_id(db: Session, category_id: int, long: float, lat: float,
                                   dist: int, page_num: int) -> List[StoreResponseDto]:
     increase_category_viewcount(db=db, category_id=category_id, count=1)
 
+    return store_list_within_radius(db=db, category_id=category_id, long=long, lat=lat, dist=dist, page_num=page_num)
+
+
+def store_list_within_radius(db: Session, category_id: int, long: float, lat: float, dist: int, page_num: int):
     store_list = db.query(Store).filter(
-        func.ST_DistanceSphere(Store.location, 'POINT({} {})'.format(long, lat)) < dist)\
+        func.ST_DistanceSphere(Store.location, 'POINT({} {})'.format(long, lat)) < dist) \
         .filter_by(category_id=category_id).order_by(Store.view_count.desc()).limit(5)
 
     store_list = store_list[STORE_PAGEINATION * page_num:STORE_PAGEINATION * (page_num + 1)]
